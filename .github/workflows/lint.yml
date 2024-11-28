@@ -1,0 +1,20 @@
+name: Check lint and format
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: check the lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: pre-commit/action@v3.0.1
